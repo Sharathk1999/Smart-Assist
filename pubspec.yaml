@@ -39,6 +39,7 @@ dependencies:
   lottie: ^2.7.0
   image_picker: ^1.0.5
   flutter_markdown: ^0.6.18+2
+
   
 
 dev_dependencies:
