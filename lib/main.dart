@@ -1,6 +1,16 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_gemini/flutter_gemini.dart';
+import 'package:smart_assist/sections/chat.dart';
+import 'package:smart_assist/sections/embed_batch_contents.dart';
+import 'package:smart_assist/sections/embed_content.dart';
+import 'package:smart_assist/sections/response_widget_stream.dart';
+import 'package:smart_assist/sections/stream.dart';
+import 'package:smart_assist/sections/text_and_image.dart';
+import 'package:smart_assist/sections/text_only.dart';
 
 void main() {
+  Gemini.init(apiKey: 'AIzaSyBFYLOJob4o0H_muyr1moPCIZkq24fMRcM', enableDebugging: true);
   runApp(const MyApp());
 }
 
@@ -10,59 +20,70 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      title: 'Flutter Gemini',
+      debugShowCheckedModeBanner: false,
+      darkTheme: ThemeData.dark(
         useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      ).copyWith(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          cardTheme: CardTheme(color: Colors.blue.shade900)),
+      home: const MyHomePage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
+class SectionItem {
+  final int index;
   final String title;
+  final Widget widget;
+
+  SectionItem(this.index, this.title, this.widget);
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _selectedItem = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  final _sections = <SectionItem>[
+    SectionItem(0, 'Stream text', const SectionTextStreamInput()),
+    SectionItem(1, 'textAndImage', const SectionTextAndImageInput()),
+    SectionItem(2, 'chat', const SectionChat()),
+    SectionItem(3, 'text', const SectionTextInput()),
+    SectionItem(4, 'embedContent', const SectionEmbedContent()),
+    SectionItem(5, 'batchEmbedContents', const SectionBatchEmbedContents()),
+    SectionItem(
+        6, 'response without setState()', const ResponseWidgetSection()),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        centerTitle: true,
+        title: Text(_selectedItem == 0
+            ? 'Smart Assist'
+            : _sections[_selectedItem].title),
+        actions: [
+          PopupMenuButton<int>(
+            initialValue: _selectedItem,
+            onSelected: (value) => setState(() => _selectedItem = value),
+            itemBuilder: (context) => _sections.map((e) {
+              return PopupMenuItem<int>(value: e.index, child: Text(e.title));
+            }).toList(),
+            child: const Icon(Icons.more_vert_rounded),
+          )
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: IndexedStack(
+        index: _selectedItem,
+        children: _sections.map((e) => e.widget).toList(),
       ),
     );
   }
