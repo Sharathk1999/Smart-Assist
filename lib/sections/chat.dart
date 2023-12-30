@@ -71,13 +71,13 @@ class _SectionChatState extends State<SectionChat> {
     return Card(
       elevation: 0,
       color:
-          content.role == 'model' ? Colors.blue.shade800 : Colors.transparent,
+          content.role == 'model' ? Colors.black : Colors.transparent,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(content.role ?? 'role'),
+            Text(content.role ?? 'role',style: const TextStyle(color: Colors.white),),
             Markdown(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),

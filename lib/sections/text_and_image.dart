@@ -34,14 +34,19 @@ class _SectionTextAndImageInputState extends State<SectionTextAndImageInput> {
       children: [
         if (searchedText != null)
           MaterialButton(
-              color: Colors.blue.shade700,
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+            ),
+              color: Colors.black,
+            
               onPressed: () {
                 setState(() {
                   searchedText = null;
                   result = null;
                 });
               },
-              child: Text('search: $searchedText')),
+              child: Text('search: $searchedText',style: const TextStyle(color: Colors.white))),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),

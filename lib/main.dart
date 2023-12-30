@@ -65,13 +65,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(_selectedItem == 0
             ? 'Smart Assist'
-            : _sections[_selectedItem].title),
+            : _sections[_selectedItem].title,),
         actions: [
           PopupMenuButton<int>(
+            surfaceTintColor: Colors.white,
             initialValue: _selectedItem,
             onSelected: (value) => setState(() => _selectedItem = value),
             itemBuilder: (context) => _sections.map((e) {

@@ -40,7 +40,11 @@ class _SectionTextInputStreamState extends State<SectionTextStreamInput> {
       children: [
         if (searchedText != null)
           MaterialButton(
-              color: Colors.blue.shade700,
+            elevation: 3,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10)
+            ),
+              color: Colors.black,
               onPressed: () {
                 setState(() {
                   searchedText = null;
@@ -48,7 +52,7 @@ class _SectionTextInputStreamState extends State<SectionTextStreamInput> {
                   // result = null;
                 });
               },
-              child: Text('search: $searchedText')),
+              child: Text('Search: $searchedText',style: const TextStyle(color: Colors.white),)),
         Expanded(child: GeminiResponseTypeView(
           builder: (context, child, response, loading) {
             if (loading) {
