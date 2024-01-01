@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class ChatInputBox extends StatelessWidget {
@@ -51,7 +52,7 @@ class ChatInputBox extends StatelessWidget {
             child: FloatingActionButton.small(
               backgroundColor: Colors.black,
               onPressed: onSend,
-              child: const Icon(Icons.send_rounded,color: Colors.white,),
+              child: FadeInLeft(child: const Icon(Icons.send_rounded,color: Colors.white,)),
             ),
           )
         ],
