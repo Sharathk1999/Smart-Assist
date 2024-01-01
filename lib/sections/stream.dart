@@ -40,10 +40,9 @@ class _SectionTextInputStreamState extends State<SectionTextStreamInput> {
       children: [
         if (searchedText != null)
           MaterialButton(
-            elevation: 3,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
-            ),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
               color: Colors.black,
               onPressed: () {
                 setState(() {
@@ -52,7 +51,10 @@ class _SectionTextInputStreamState extends State<SectionTextStreamInput> {
                   // result = null;
                 });
               },
-              child: Text('Search: $searchedText',style: const TextStyle(color: Colors.white),)),
+              child: Text(
+                'Search: $searchedText',
+                style: const TextStyle(color: Colors.white),
+              )),
         Expanded(child: GeminiResponseTypeView(
           builder: (context, child, response, loading) {
             if (loading) {
@@ -65,7 +67,18 @@ class _SectionTextInputStreamState extends State<SectionTextStreamInput> {
                 selectable: true,
               );
             } else {
-              return const Center(child: Text('Search something!'));
+              return const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Center(
+                  child: Text(
+                    "I'm all ears (though I only have circuits, no actual ears). What's going on?",
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              );
             }
           },
         )),

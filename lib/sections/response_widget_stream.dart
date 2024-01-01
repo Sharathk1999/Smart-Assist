@@ -57,7 +57,18 @@ class _SectionTextInputStreamState extends State<ResponseWidgetSection> {
                     ? GeminiResponseTypeView(
                         builder: (context, child, response, loading) =>
                             Markdown(data: response ?? ''))
-                    : const Center(child: Text('Search something!'))),
+                    : const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Center(
+                  child: Text(
+                    "I'm all ears (though I only have circuits, no actual ears). What's going on?",
+                    maxLines: 2,
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ),),
         if (finishReason != null) Text(finishReason!),
         ChatInputBox(
           controller: controller,

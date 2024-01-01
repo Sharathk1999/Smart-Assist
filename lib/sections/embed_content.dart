@@ -48,7 +48,9 @@ class _SectionEmbedContentState extends State<SectionEmbedContent> {
                         child: SingleChildScrollView(
                             child: Text(result?.toString() ?? '')),
                       )
-                    : const Center(child: Text('Search something!'))),
+                    : const Center(
+                              child: Text("I'm all ears (though I only have circuits, no actual ears). What's going on?"),
+                            ),),
         ChatInputBox(
           controller: controller,
           onSend: () {

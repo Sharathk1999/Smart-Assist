@@ -15,6 +15,7 @@ class ChatInputBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8),
+      surfaceTintColor: Colors.black.withOpacity(0.4),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -36,7 +37,10 @@ class ChatInputBox extends StatelessWidget {
             keyboardType: TextInputType.multiline,
             decoration: const InputDecoration(
               contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 4),
-              hintText: 'Message',
+              hintText: '   Talk to Smart Assist',
+              hintStyle: TextStyle(
+                color: Colors.grey,
+              ),
               border: InputBorder.none,
             ),
             onTapOutside: (event) =>

@@ -2,11 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:smart_assist/sections/chat.dart';
-import 'package:smart_assist/sections/embed_batch_contents.dart';
-import 'package:smart_assist/sections/embed_content.dart';
 import 'package:smart_assist/sections/stream.dart';
 import 'package:smart_assist/sections/text_and_image.dart';
-import 'package:smart_assist/sections/text_only.dart';
 
 void main() {
   Gemini.init(apiKey: 'AIzaSyBFYLOJob4o0H_muyr1moPCIZkq24fMRcM', enableDebugging: true);
@@ -19,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Gemini',
+      title: 'Smart Assist',
     
       debugShowCheckedModeBanner: false,
       darkTheme: ThemeData.dark(
@@ -52,12 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedItem = 0;
 
   final _sections = <SectionItem>[
-    SectionItem(0, 'Stream Chat', const SectionTextStreamInput()),
-    SectionItem(1, 'Text & Image Chat', const SectionTextAndImageInput()),
+    SectionItem(0, 'Flow Chat', const SectionTextStreamInput()),
+    SectionItem(1, 'Image-Enriched Chat', const SectionTextAndImageInput()),
     SectionItem(2, 'Chat', const SectionChat()),
-    SectionItem(3, 'Text', const SectionTextInput()),
-    SectionItem(4, 'Embed Content Chat', const SectionEmbedContent()),
-    SectionItem(5, 'Batch Embed Contents Chat', const SectionBatchEmbedContents()),
+    // SectionItem(3, 'Chat', const SectionTextInput()),
+    // SectionItem(4, 'Embed Content Chat', const SectionEmbedContent()),
+    // SectionItem(5, 'Batch Embed Contents Chat', const SectionBatchEmbedContents()),
     // SectionItem(
     //     6, 'response without setState()', const ResponseWidgetSection()),
   ];
@@ -73,7 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
             : _sections[_selectedItem].title,),
         actions: [
           PopupMenuButton<int>(
-            surfaceTintColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12)
+            ),
+            splashRadius: 12,
+            surfaceTintColor: const Color.fromARGB(255, 60, 59, 59),
             initialValue: _selectedItem,
             onSelected: (value) => setState(() => _selectedItem = value),
             itemBuilder: (context) => _sections.map((e) {
