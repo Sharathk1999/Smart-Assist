@@ -52,7 +52,7 @@ class _SectionTextInputStreamState extends State<SectionTextStreamInput> {
                 });
               },
               child: Text(
-                'Search: $searchedText',
+                'Recent Search: $searchedText',
                 style: const TextStyle(color: Colors.white),
               )),
         Expanded(child: GeminiResponseTypeView(

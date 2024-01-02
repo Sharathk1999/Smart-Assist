@@ -38,7 +38,7 @@ class _SectionEmbedContentState extends State<SectionEmbedContent> {
                   result = null;
                 });
               },
-              child: Text('search: $searchedText',style: const TextStyle(color: Colors.white))),
+              child: Text('Recent search: $searchedText',style: const TextStyle(color: Colors.white))),
         Expanded(
             child: loading
                 ? Lottie.asset('assets/lottie/ai.json')

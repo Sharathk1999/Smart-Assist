@@ -26,7 +26,7 @@ class ChatInputBox extends StatelessWidget {
               child: IconButton(
                   onPressed: onClickCamera,
                   color: Theme.of(context).colorScheme.onSecondary,
-                  icon: const Icon(Icons.file_copy_rounded,color: Colors.black,),),
+                  icon: const Icon(Icons.folder_rounded,color: Colors.black,),),
             ),
           Expanded(
               child: TextField(
@@ -52,7 +52,7 @@ class ChatInputBox extends StatelessWidget {
             child: FloatingActionButton.small(
               backgroundColor: Colors.black,
               onPressed: onSend,
-              child: FadeInLeft(child: const Icon(Icons.send_rounded,color: Colors.white,)),
+              child: FadeInLeft(child: const Icon(Icons.screen_search_desktop_rounded,color: Colors.white,)),
             ),
           )
         ],

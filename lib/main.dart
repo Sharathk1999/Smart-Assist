@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
-import 'package:smart_assist/sections/chat.dart';
 import 'package:smart_assist/sections/stream.dart';
 import 'package:smart_assist/sections/text_and_image.dart';
 
@@ -51,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final _sections = <SectionItem>[
     SectionItem(0, 'Flow Chat', const SectionTextStreamInput()),
     SectionItem(1, 'Image-Enriched Chat', const SectionTextAndImageInput()),
-    SectionItem(2, 'Chat', const SectionChat()),
+    // SectionItem(2, 'Chat', const SectionChat()),
     // SectionItem(3, 'Chat', const SectionTextInput()),
     // SectionItem(4, 'Embed Content Chat', const SectionEmbedContent()),
     // SectionItem(5, 'Batch Embed Contents Chat', const SectionBatchEmbedContents()),

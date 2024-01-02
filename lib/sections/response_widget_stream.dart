@@ -49,7 +49,7 @@ class _SectionTextInputStreamState extends State<ResponseWidgetSection> {
                   result = null;
                 });
               },
-              child: Text('search: $searchedText',style: const TextStyle(color: Colors.white))),
+              child: Text('Recent search: $searchedText',style: const TextStyle(color: Colors.white))),
         Expanded(
             child: loading
                 ? Lottie.asset('assets/lottie/ai.json')

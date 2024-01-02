@@ -38,7 +38,7 @@ class _SectionTextAndImageInputState extends State<SectionTextAndImageInput> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10)
             ),
-              color: Colors.black,
+              color: Colors.white,
             
               onPressed: () {
                 setState(() {
@@ -46,7 +46,7 @@ class _SectionTextAndImageInputState extends State<SectionTextAndImageInput> {
                   result = null;
                 });
               },
-              child: Text('search: $searchedText',style: const TextStyle(color: Colors.white))),
+              child: Text('Recent search: $searchedText',style: const TextStyle(color: Colors.black))),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
