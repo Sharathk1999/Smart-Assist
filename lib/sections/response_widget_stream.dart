@@ -38,10 +38,9 @@ class _SectionTextInputStreamState extends State<ResponseWidgetSection> {
       children: [
         if (searchedText != null)
           MaterialButton(
-                   elevation: 3,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
-            ),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
               color: Colors.black,
               onPressed: () {
                 setState(() {
@@ -49,27 +48,39 @@ class _SectionTextInputStreamState extends State<ResponseWidgetSection> {
                   result = null;
                 });
               },
-              child: Text('Recent search: $searchedText',style: const TextStyle(color: Colors.white))),
+              child: Text('Recent search: $searchedText',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontFamily: "Quicksand",
+                  ))),
         Expanded(
-            child: loading
-                ? Lottie.asset('assets/lottie/ai.json')
-                : result != null
-                    ? GeminiResponseTypeView(
-                        builder: (context, child, response, loading) =>
-                            Markdown(data: response ?? ''))
-                    : const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Center(
-                  child: Text(
-                    "I'm all ears (though I only have circuits, no actual ears). What's going on?",
-                    maxLines: 2,
-                    style: TextStyle(
-                      color: Colors.grey,
+          child: loading
+              ? Lottie.asset('assets/lottie/ai.json')
+              : result != null
+                  ? GeminiResponseTypeView(
+                      builder: (context, child, response, loading) =>
+                          Markdown(data: response ?? ''))
+                  : const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Center(
+                        child: Text(
+                          "I'm all ears (though I only have circuits, no actual ears). What's going on?",
+                          maxLines: 2,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontFamily: "Quicksand",
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),),
-        if (finishReason != null) Text(finishReason!),
+        ),
+        if (finishReason != null)
+          Text(
+            finishReason!,
+            style: const TextStyle(
+              fontFamily: "Quicksand",
+            ),
+          ),
         ChatInputBox(
           controller: controller,
           onSend: () {

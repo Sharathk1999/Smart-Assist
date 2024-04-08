@@ -39,7 +39,7 @@ class _SectionTextInputStreamState extends State<SectionBatchEmbedContents> {
                   result = null;
                 });
               },
-              child: Text('search: $searchedText',style: const TextStyle(color: Colors.white,),),),
+              child: Text('search: $searchedText',style: const TextStyle(color: Colors.white,fontFamily: "Quicksand",),),),
         Expanded(
             child: loading
                 ? Lottie.asset('assets/lottie/ai.json')
@@ -50,7 +50,7 @@ class _SectionTextInputStreamState extends State<SectionBatchEmbedContents> {
                             child: Text(result?.toString() ?? '')),
                       )
                     : const Center(
-                              child: Text("I'm all ears (though I only have circuits, no actual ears). What's going on?"),
+                              child: Text("I'm all ears (though I only have circuits, no actual ears). What's going on?",style: TextStyle(fontFamily: "Quicksand",),),
                             ),),
         ChatInputBox(
           controller: controller,

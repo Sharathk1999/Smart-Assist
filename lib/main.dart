@@ -1,11 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:smart_assist/sections/stream.dart';
 import 'package:smart_assist/sections/text_and_image.dart';
 
-void main() {
-  Gemini.init(apiKey: 'AIzaSyBFYLOJob4o0H_muyr1moPCIZkq24fMRcM', enableDebugging: true);
+void main() async{
+  await dotenv.load(fileName: ".env");
+  Gemini.init(apiKey: dotenv.env["GEMINI_KEY"]!, enableDebugging: true);
   runApp(const MyApp());
 }
 
@@ -18,10 +20,11 @@ class MyApp extends StatelessWidget {
       title: 'Smart Assist',
     
       debugShowCheckedModeBanner: false,
+     
       darkTheme: ThemeData.dark(
         useMaterial3: true,
       ).copyWith(
-        
+          
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
           cardTheme: CardTheme(color: Colors.blue.shade900)),
       home: const MyHomePage(),
@@ -66,7 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
         title: Text(_selectedItem == 0
             ? 'Smart Assist'
-            : _sections[_selectedItem].title,),
+            : _sections[_selectedItem].title,style: const TextStyle(
+              fontFamily: "Quicksand",
+              fontWeight: FontWeight.w600,
+            ),),
         actions: [
           PopupMenuButton<int>(
             shape: RoundedRectangleBorder(
@@ -79,7 +85,10 @@ class _MyHomePageState extends State<MyHomePage> {
             itemBuilder: (context) => _sections.map((e) {
               return PopupMenuItem<int>(value: e.index, child: Text(e.title));
             }).toList(),
-            child: const Icon(Icons.more_vert_rounded),
+            child: const Padding(
+              padding: EdgeInsets.only(right: 10),
+              child: Icon(Icons.menu_rounded),
+            ),
           )
         ],
       ),

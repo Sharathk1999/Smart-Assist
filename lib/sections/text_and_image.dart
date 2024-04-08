@@ -46,7 +46,7 @@ class _SectionTextAndImageInputState extends State<SectionTextAndImageInput> {
                   result = null;
                 });
               },
-              child: Text('Recent search: $searchedText',style: const TextStyle(color: Colors.black))),
+              child: Text('Recent search: $searchedText',style: const TextStyle(color: Colors.black,fontFamily: "Quicksand",))),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -71,6 +71,7 @@ class _SectionTextAndImageInputState extends State<SectionTextAndImageInput> {
                     maxLines: 2,
                     style: TextStyle(
                       color: Colors.grey,
+                      fontFamily: "Quicksand",
                     ),
                   ),
                 ),

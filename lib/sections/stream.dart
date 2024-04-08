@@ -6,6 +6,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:smart_assist/widgets/chat_input_box.dart';
 import 'package:smart_assist/widgets/item_image_view.dart';
 
@@ -53,7 +54,7 @@ class _SectionTextInputStreamState extends State<SectionTextStreamInput> {
               },
               child: Text(
                 'Recent Search: $searchedText',
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white,fontFamily: "Quicksand",),
               )),
         Expanded(child: GeminiResponseTypeView(
           builder: (context, child, response, loading) {
@@ -67,14 +68,19 @@ class _SectionTextInputStreamState extends State<SectionTextStreamInput> {
                 selectable: true,
               );
             } else {
-              return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+              return  Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Center(
-                  child: Text(
-                    "I'm all ears (though I only have circuits, no actual ears). What's going on?",
-                    maxLines: 2,
-                    style: TextStyle(
-                      color: Colors.grey,
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.black38,
+                    highlightColor: Colors.black,
+                    child: const Text(
+                      "I'm all ears (though I only have circuits, no actual ears). What's going on?",
+                      maxLines: 2,
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontFamily: "Quicksand",
+                      ),
                     ),
                   ),
                 ),

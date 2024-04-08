@@ -10,13 +10,20 @@ class ItemImageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(4),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(12),
-        child: Image.memory(
-          bytes,
-          width: 110,
-          height: 110,
-          fit: BoxFit.cover,
+      child: Container(
+        padding: const EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          border: Border.all(width: 1,color: Colors.black),
+          borderRadius: BorderRadius.circular(12)
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Image.memory(
+            bytes,
+            width: 110,
+            height: 110,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

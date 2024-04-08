@@ -38,7 +38,7 @@ class _SectionTextInputState extends State<SectionTextInput> {
                   result = null;
                 });
               },
-              child: Text('search: $searchedText',style: const TextStyle(color: Colors.white))),
+              child: Text('search: $searchedText',style: const TextStyle(color: Colors.white,fontFamily: "Quicksand",))),
         Expanded(
             child: loading
                 ? Lottie.asset('assets/lottie/ai.json')
@@ -55,6 +55,7 @@ class _SectionTextInputState extends State<SectionTextInput> {
                     maxLines: 2,
                     style: TextStyle(
                       color: Colors.grey,
+                      fontFamily: "Quicksand",
                     ),
                   ),
                 ),

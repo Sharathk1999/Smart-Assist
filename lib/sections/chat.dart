@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:smart_assist/widgets/chat_input_box.dart';
 
 
@@ -41,14 +42,19 @@ class _SectionChatState extends State<SectionChat> {
                       ),
                     ),
                   )
-                : const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
+                :  Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Center(
-                  child: Text(
-                    "I'm all ears (though I only have circuits, no actual ears). What's going on?",
-                    maxLines: 2,
-                    style: TextStyle(
-                      color: Colors.grey,
+                  child: Shimmer.fromColors(
+                    baseColor: Colors.black38,
+                    highlightColor: Colors.black,
+                    child: const Text(
+                      "I'm all ears (though I only have circuits, no actual ears). What's going on?",
+                      maxLines: 2,
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontFamily: "Quicksand",
+                      ),
                     ),
                   ),
                 ),
@@ -88,7 +94,7 @@ class _SectionChatState extends State<SectionChat> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(content.role ?? 'role',style: const TextStyle(color: Colors.white),),
+            Text(content.role ?? 'role',style: const TextStyle(color: Colors.white,fontFamily: "Quicksand",),),
             Markdown(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
